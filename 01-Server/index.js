@@ -69,11 +69,11 @@
 
 // Create File :-)
 
-let fs = require("fs");
-fs.writeFile("index.html", "<h1> Hello World </h1>", (err) =>{
-    if(err) throw err;
-    console.log("File created successfully");
-})
+// let fs = require("fs");
+// fs.writeFile("index.html", "<h1> Hello World </h1>", (err) =>{
+//     if(err) throw err;
+//     console.log("File created successfully");
+// })
 
 
 
@@ -85,3 +85,25 @@ fs.writeFile("index.html", "<h1> Hello World </h1>", (err) =>{
 //     if(err) throw err;
 //     console.log(data.toString());
 // })
+
+
+
+
+
+
+
+
+// Create Server :----------------------------------------------------------------
+
+let http = require("http");
+// console.log(http, "Server started");
+
+
+let server = http.createServer((req, res) => {
+    // console.log("Hey, server started");
+    res.end("Hey, server started");
+})
+
+server.listen(5000, () => {
+    console.log("Server is running on port 5000");
+})
