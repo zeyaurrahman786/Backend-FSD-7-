@@ -124,16 +124,53 @@
 
 // Server-Side-Rendering :-)
 
+// let express = require('express');
+
+// let app = express();    
+
+// app.set('view engine', 'ejs');
+
+// app.get('/', (req, res) =>{
+//     res.render('index');
+// })
+
+// app.listen(3000, (req, res) => {
+//     console.log("Server listening on port 3000");
+// });
+
+
+
+
+
+
+
+
+
+
 let express = require('express');
 
-let app = express();    
+let app = express(); 
+
+let path = require('path');
 
 app.set('view engine', 'ejs');
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) =>{
     res.render('index');
 })
 
-app.listen(3000, (req, res) => {
-    console.log("Server listening on port 3000");
+app.get('/random', (req, res) =>{
+    let randomNum = Math.floor(Math.random() * 100);
+    res.render('random', {randomNum});
+})
+
+app.get('/array', (req, res) =>{
+    let arr = ['Hello', 'Hii', 'Good Morning', 'How are you?'];
+    res.render('array', {arr});
+})
+
+app.listen(8000, (req, res) => {
+    console.log("Server is listening on port 8000");
 });
