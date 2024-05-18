@@ -147,30 +147,68 @@
 
 
 
+// let express = require('express');
+
+// let app = express(); 
+
+// let path = require('path');
+
+// app.set('view engine', 'ejs');
+
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// app.get('/', (req, res) =>{
+//     res.render('index');
+// })
+
+// app.get('/random', (req, res) =>{
+//     let randomNum = Math.floor(Math.random() * 100);
+//     res.render('random', {randomNum});
+// })
+
+// app.get('/array', (req, res) =>{
+//     let arr = ['Hello', 'Hii', 'Good Morning', 'How are you?'];
+//     res.render('array', {arr});
+// })
+
+// app.listen(8000, (req, res) => {
+//     console.log("Server is listening on port 8000");
+// });
+
+
+
+
+
+
+
+
+
+
+
+// Form Get vs Post :-)
+
 let express = require('express');
-
 let app = express(); 
-
-let path = require('path');
+app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) =>{
     res.render('index');
 })
 
-app.get('/random', (req, res) =>{
-    let randomNum = Math.floor(Math.random() * 100);
-    res.render('random', {randomNum});
+// Form -> GET
+app.get('/user', (req, res) => {
+    console.log(req.query, "Hellooo!");
+    let {name, email, password} = req.query;
+    res.send(`${ name } ${ email } ${ password }`);
+    // res.send("Done!");
 })
 
-app.get('/array', (req, res) =>{
-    let arr = ['Hello', 'Hii', 'Good Morning', 'How are you?'];
-    res.render('array', {arr});
+// Form -> POST
+app.post('/user', (req, res) => {
+    console.log(req.body, "Hiiiii");
+    res.send("Form Done!");
 })
 
-app.listen(8000, (req, res) => {
-    console.log("Server is listening on port 8000");
-});
+app.listen(5000);
