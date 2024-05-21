@@ -187,28 +187,29 @@
 
 // Form Get vs Post :-)
 
-let express = require('express');
-let app = express(); 
-app.use(express.urlencoded({ extended: true }));
+// let express = require('express');
+// let app = express(); 
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 
-app.get('/', (req, res) =>{
-    res.render('index');
-})
+// app.get('/', (req, res) =>{
+//     res.render('index');
+// })
 
-// Form -> GET
-app.get('/user', (req, res) => {
-    console.log(req.query, "Hellooo!");
-    let {name, email, password} = req.query;
-    res.send(`${ name } ${ email } ${ password }`);
-    // res.send("Done!");
-})
+// // Form -> GET
+// app.get('/user', (req, res) => {
+//     console.log(req.query, "Hellooo!");
+//     let {name, email, password} = req.query;
+//     res.send(`${ name } ${ email } ${ password }`);
+//     // res.send("Done!");
+// })
 
-// Form -> POST
-app.post('/user', (req, res) => {
-    console.log(req.body, "Hiiiii");
-    res.send("Form Done!");
-})
+// // Form -> POST
+// app.post('/user', (req, res) => {
+//     console.log(req.body, "Hiiiii");
+//     res.send("Form Done!");
+// })
 
-app.listen(5000);
+// app.listen(5000);
