@@ -1,10 +1,12 @@
-// Restful API :-)
+// Restful API :-) CRUD Operations 
 
 const express = require('express');
 const app = express();
+const methodOverride = require('method-override');
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method')); 
 
 
 let comments = [
@@ -29,11 +31,15 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
-app.get('/blogs', (req, res) => {
+app.get('/blog', (req, res) => {
   res.render('index', {comments});
 });
 
-app.get('/blogs/new', (req, res) => {
+
+
+// Create comment
+
+app.get('/blog/new', (req, res) => {
   res.render('new');
 });
 
@@ -41,8 +47,60 @@ app.post('/blog', (req, res) => {
     console.log(req.body, "Hiiiii");
     let{username, comment} = req.body;
     comments.push({id:comments.length, username, comment});
-    res.redirect('/blogs');
+    res.redirect('/blog');
     // res.send("Send");
-});1
+});
+
+
+
+// Edit comments
+
+app.get('/blog/:id', (req, res) => {
+  let {id} = req.params;
+  console.log(id, "iddddd");
+  
+
+let data = comments.find((data)=>{
+  return data.id == id;
+})
+console.log(data, "dataaa");
+res.render('edit', {data});
+});
+
+
+
+app.patch('/blog/:id',(req,res)=>{
+  let {id} = req.params;
+  console.log(id, "ej");
+
+  let{username, comment} = req.body;
+  
+  let data = comments.find((data)=>{
+    return data.id == id;
+  })
+  console.log(data, "dataaa");
+
+  data.comment = comment;
+  data.username = username;
+  res.redirect('/blog');
+});
+
+
+
+// Delete comments
+
+app.delete('/blog/:id',(req,res)=>{
+  let {id} = req.params;
+  console.log(id, "ej");
+
+  let data = comments.find((data)=>{
+    return data.id == id;
+  })
+  console.log(data, "dataaa");
+
+  let index = comments.indexOf(data);
+  comments.splice(index, 1);
+  res.redirect('/blog');
+});
 
 app.listen(3000);

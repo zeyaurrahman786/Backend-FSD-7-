@@ -11,6 +11,10 @@
         <h2>id: <%= i.id %><h2>
         <p>name: <%= i.username %></p>
         <p>comment: <%= i.comment %></p>
+        <a href="/blog/<%= i.id %>">Edit</a>
+        <form action="/blog/<%= i.id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+        </form>
    <% } %>
 </body>
-</html>
+</html> 
