@@ -91,15 +91,12 @@ app.patch('/blog/:id',(req,res)=>{
 
 app.delete('/blog/:id',(req,res)=>{
   let {id} = req.params;
-  console.log(id, "ej");
 
-  let data = comments.find((data)=>{
-    return data.id == id;
+  let newData = comments.filter((data)=>{
+    return data.id!=id;
   })
-  console.log(data, "dataaa");
 
-  let index = comments.indexOf(data);
-  comments.splice(index, 1);
+  comments = newData
   res.redirect('/blog');
 });
 
