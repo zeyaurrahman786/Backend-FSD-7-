@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Books Details</h1>
+    <% for(let i of bookData){ %>
+        <h2>id: <%= i.id %><h2>
+        <p>title: <%= i.title %></p>
+        <p>author: <%= i.author %></p>
+        <p>year: <%= i.year %></p>
+   <% } %>
+</body>
+</html>
