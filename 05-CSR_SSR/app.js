@@ -19,7 +19,7 @@ app.post('/todo', (req, res) => {
   console.log(req.body, "Jejeje...");
   let{data} = req.body;
   let data1 = parseInt(data);
-  arr.push(data1) 
+  arr.push(data1);
   res.send('Done!');
 });
 
