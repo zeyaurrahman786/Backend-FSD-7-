@@ -20,6 +20,7 @@ $('#btn').on('click' ,() => {
     console.log(data, "datasss!");
     $.post('/todo', {data}, (res) => {
         console.log(res, "Yahi haiiii!");
+        $('#inp').val("");
         restart();
     })
 })
