@@ -3,6 +3,7 @@ const app = express();
 
 app.use('/home', express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
 
 
 let arr = [1, 2, 3, 4, 5];
@@ -12,7 +13,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/todo', (req, res) => {
-  res.json(arr);
+  if(req.xhr){
+    res.json(arr);
+  }
+  else {
+    res.render('index', {arr});
+  }
 });
 
 app.post('/todo', (req, res) => {
