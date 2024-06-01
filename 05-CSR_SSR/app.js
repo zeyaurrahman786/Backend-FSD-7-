@@ -26,7 +26,7 @@ app.post('/todo', (req, res) => {
   let{data} = req.body;
   let data1 = parseInt(data);
   arr.push(data1);
-  res.send('Done!');
+  res.send('Doneeee!');
 });
 
 app.listen(3000); 
