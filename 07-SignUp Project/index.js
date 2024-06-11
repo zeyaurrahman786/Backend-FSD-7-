@@ -22,12 +22,19 @@ app.get('/',(req,res)=>{
     res.send('Welcome');
 });
 
+
+
+
+
+
+// SignUp API
+
 app.post('/signup', async (req,res)=>{
     console.log(req.body);
     let userData = req.body;
     let {email} = req.body;
     let user = await User.findOne({email});
-    
+
     if(user){
         res.send('User already exists');
     }
@@ -47,6 +54,34 @@ app.post('/signup', async (req,res)=>{
     }
 
     // res.send('Createddddddd');
+});
+
+
+
+
+
+
+// LogIn API
+
+app.post('/login', async (req,res)=>{
+    console.log(req.body);
+    let userInfo = req.body;
+
+    let loginData = await User.findOne({email: userInfo.email})
+    if(!loginData){
+        res.send('User nahi mila hai');
+    }
+    else{
+        // res.send("User mil gya hai");
+
+        let validPassword = await bcrypt.compare(userInfo.password, loginData.password);
+        if(!validPassword){
+            res.send('Password is incorrect');
+        }
+        else{
+            res.send('Login successfully');
+        }
+    }
 });
 
 app.listen(5000,()=>{
