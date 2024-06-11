@@ -27,6 +27,7 @@ app.post('/signup', async (req,res)=>{
     let userData = req.body;
     let {email} = req.body;
     let user = await User.findOne({email});
+    
     if(user){
         res.send('User already exists');
     }
@@ -34,9 +35,18 @@ app.post('/signup', async (req,res)=>{
         userData.password = await bcrypt.hash(userData.password, 10)
         console.log(userData.password);
 
-        // res.send('User created successfully');
+        let dbUser = new User ({
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            email: userData.email,
+            password:  userData.password,
+        });
+
+        await dbUser.save();
+        res.send('User created successfully');
     }
-    // res.send('Heeee...');
+
+    // res.send('Createddddddd');
 });
 
 app.listen(5000,()=>{
