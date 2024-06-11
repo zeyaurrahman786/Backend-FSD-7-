@@ -2,6 +2,7 @@ let express = require('express');
 let mongoose = require('mongoose');
 let User = require('./models/model');
 let bcrypt = require('bcrypt')
+let jwt = require('jsonwebtoken');
 let app = express();
 
 
@@ -77,9 +78,17 @@ app.post('/login', async (req,res)=>{
         let validPassword = await bcrypt.compare(userInfo.password, loginData.password);
         if(!validPassword){
             res.send('Password is incorrect');
-        }
+        } 
         else{
-            res.send('Login successfully');
+
+        // Generate Token 
+
+        let data = JSON.stringify(loginData);
+        let token = jwt.sign(data, 'ASDFGHJKL')
+        console.log(token, "Token generated");
+        
+        // res.send('Logged in successfully');
+            res.send({token, loginData});
         }
     }
 });
