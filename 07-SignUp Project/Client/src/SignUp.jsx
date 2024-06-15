@@ -4,21 +4,47 @@ import React from 'react'
 const SignUp = () => {
     return (
         <>
-            <h2>Signup</h2>
-            <form>
-                <label> firstName :- <input type="name"/></label>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    First Name:
+                    <input
+                        type="text"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                    />
+                </label>
                 <br />
+                <label>
+                    Last Name:
+                    <input
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                    />
+                </label>
                 <br />
-                <label> lastName :- <input type="name"/></label>
+                <label>
+                    Email:
+                    <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
+                </label>
                 <br />
+                <label>
+                    Message:
+                    <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                    />
+                </label>
                 <br />
-                <label> Email :- <input type="email"/></label>
-                <br />
-                <br />
-                <label> Password :- <input type="password"/></label>
-                <br />
-                <br />
-                <button type="submit">Signup</button>
+                <button type="submit">Submit</button>
             </form>
         </>
     )
