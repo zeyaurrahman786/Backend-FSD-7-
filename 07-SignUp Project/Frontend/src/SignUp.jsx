@@ -27,10 +27,22 @@ const Signup = () => {
       <form onSubmit={done}>
         <div id="form">
           <div className="from2">
+            <label htmlFor="name">First Name :- </label>
             <input className="forminput" name='firstName' value={input.firstName} onChange={fun1} type="text" placeholder="First name " />
-            <input className="forminput" name='lastName' value={input.lastName} onChange={fun1} type="text" placeholder="last name " />
+            <br />
+            <br />
+            <label htmlFor="name">Last Name :- </label>
+            <input className="forminput" name='lastName' value={input.lastName} onChange={fun1} type="text" placeholder="Last Name " />
+            <br />
+            <br />
+            <label htmlFor="name">Email :- </label>
             <input className="forminput" name='email' value={input.email} onChange={fun1} type="Email" placeholder="Email" />
-            <input className="forminput" name='passWord' value={input.passWord} onChange={fun1} type="password" placeholder="PassWord " />
+            <br />
+            <br />
+            <label htmlFor="name">Password :- </label>
+            <input className="forminput" name='password' value={input.passWord} onChange={fun1} type="password" placeholder="PassWord " />
+            <br />
+            <br />
             <button className="formbtn" >Create Account</button>
           </div>
         </div>
