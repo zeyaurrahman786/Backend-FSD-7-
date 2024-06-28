@@ -1,6 +1,6 @@
 let express = require('express')
 let mongoose = require('mongoose');
-let sinupRoutes = require('./routes/login');
+let sinupRoutes = require('./routes/sinup');
 let loginRoutes = require('./routes/user')
 let cors = require('cors')
 // restraurant
@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 })
 app.use('/api', sinupRoutes)
 app.use('/api', loginRoutes)
+
 
 app.listen(4000, () => {
     console.log("server is running on 4000");
